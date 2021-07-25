@@ -1,6 +1,4 @@
-﻿using ATG.CodeTest.Entities;
-
-namespace ATG.CodeTest.Data
+﻿namespace ATG.CodeTest.Data
 {
     public class ArchivedRepository : Repository
     {

@@ -1,8 +1,5 @@
 ﻿using ATG.CodeTest.Data;
 using ATG.CodeTest.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ATG.CodeTest.BLL
 {

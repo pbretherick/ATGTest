@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ATG.CodeTest.Data
+﻿namespace ATG.CodeTest.Data
 {
     public interface IFailoverRepository : IRepository
     {
