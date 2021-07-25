@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ATG.CodeTest
+﻿namespace ATG.CodeTest.Entities
 {
    public class Lot
     {
@@ -13,6 +9,7 @@ namespace ATG.CodeTest
         public string Description { get; set; }
 
         public decimal Price { get; set; }
+
         public bool IsArchived { get; set; }
     }
 }
