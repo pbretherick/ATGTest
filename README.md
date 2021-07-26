@@ -3,24 +3,26 @@ ATG Code Test
 
 Solution:
 
-Considered a Factory class, but as the archive repository could be used after the other 2 it doesnt really fit
-Considered a Chain-of-responsibility class, but as the 3 repositories are fixed in number and the order they are queried, it also doesn't fit
-Best solution seemed to be to move the logic to a GetLot method in a repository manager class.
-The 3 repositories are passed in as interfaces to allow for mocked unit tests.
+Moved the logic to a GetLot method in a repository manager class, and the 3 repositories are now passed in as interfaces. All 3 repositories now inherit from the same abstract class.
 
+isFailoverModeEnabled and maxFailedRequests are passed in to the repository manager constructor, to allow them to be set in the service env variables.
 
+Its not clear how the failover repository works, or what lots are stored here.
 
-Check for lot.IsArchived - lot maybe null, and maybe returned from the main repository.
-Rename LoadCustomer to GetLot
+Are only the failed to save lots stored here, in which case what is the point of the 10 minute check as the one lot we are looking for maybe the only one that failed in the last 10 mins or the only one that successfully saved.
 
-Lot.cs
-fixed spacing
-removed unnecessary using
+If all the lots stored here how is the failover datetime set?
 
-LotRepository.cs
-removed unnecessary using
+I think the likely functionality is all the lots are stored here, and any that fail have the datetime set.
 
-FailoverLots.cs
-removed unnecessary using
+Changed FailoverLots tp FailoverLot, and to inherit from Lot, to fit in with the above so any that work are saved as a Lot and any that fail are a FailoverLot. Also made DateTime nullable and added null check to the 10 minute count.
+
+Added functionality to failbackRepository to allow it to cache result from GetFailOverLotEntries for the call to GetLot.
+
+Rename LoadCustomer to GetLot, fixed the 10 min check to add -10 minutes
+
+In a few of the files i fixed spacing and removed unnecessary using statements
+
+Added unit tests for the service and manager, but not repositories as there is no db context to mock.
 
 
