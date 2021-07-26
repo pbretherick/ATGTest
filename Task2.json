@@ -1,0 +1,15 @@
+{
+	"name": "Salary linked loan applications",
+	"description": "microservice architecture, Vuetify web application, ASP.NET Core Web API services, MySQL database",
+	"techStack": [
+		"ASP.NET Core",
+		"c#",
+		"MySQL",
+		"TypeScript"
+	],
+	"techTools": [
+		"Docker",
+		"AWS",
+		"Vuetify"
+	]
+}
