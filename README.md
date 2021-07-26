@@ -15,7 +15,7 @@ If all the lots stored here how is the failover datetime set?
 
 I think the likely functionality is all the lots are stored here, and any that fail have the datetime set.
 
-Changed FailoverLots tp FailoverLot, and to inherit from Lot, to fit in with the above so any that work are saved as a Lot and any that fail are a FailoverLot. Also made DateTime nullable and added null check to the 10 minute count.
+Changed FailoverLots to FailoverLot, and to inherit from Lot, to fit in with the above so any that work are saved as a Lot and any that fail are a FailoverLot. Also made DateTime nullable and added null check to the 10 minute count.
 
 Added functionality to failbackRepository to allow it to cache result from GetFailOverLotEntries for the call to GetLot.
 
