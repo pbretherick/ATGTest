@@ -2,6 +2,6 @@
 {
    public class LotRepository : Repository
     {
-        // add in data access to use the normal repository
+        // add in data access to use the Lot repository
     }
 }

@@ -7,21 +7,23 @@ namespace ATG.CodeTest.Data
 {
    public class FailoverLotRepository : Repository, IFailoverRepository
     {
-        private List<FailoverLots> _failoverLots = null;
+        private List<FailoverLot> _failoverLots = null;
 
         public int TenMinuteCount
         {
             get
             {
                 var failoverLots = GetFailOverLotEntries();
-                return _failoverLots.Where(failoverLotsEntry => failoverLotsEntry.DateTime > DateTime.Now.AddMinutes(-10)).Count();
+                return _failoverLots.Where(failoverLotsEntry => failoverLotsEntry.DateTime != null && failoverLotsEntry.DateTime > DateTime.Now.AddMinutes(-10)).Count();
             }
         }
 
-        private List<FailoverLots> GetFailOverLotEntries()
+        private List<FailoverLot> GetFailOverLotEntries()
         {
-            // return all from fail entries from database
-            _failoverLots = _failoverLots ?? new List<FailoverLots>();
+            // getting all the failover lots not ideal, but given i lack information
+            // on how this works (or how many lots are in the store) for now get all
+            // and cache them for the GetLot call.
+            _failoverLots = _failoverLots ?? new List<FailoverLot>();
             return _failoverLots;
         }
 
